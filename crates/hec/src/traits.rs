@@ -12,6 +12,10 @@ pub trait HMap<T> {
     fn map(&mut self, value: T) -> Self::Return;
 }
 
+pub trait HSink<T> {
+    fn sink(&mut self, value: T);
+}
+
 pub trait AcceptHVisit<V> {
     fn accept_hvisit(&self, visitor: V);
 }
@@ -23,4 +27,9 @@ pub trait AcceptHVisitMut<V> {
 pub trait AcceptHMap<M> {
     type Return;
     fn accept_hmap(self, map: M) -> Self::Return;
+}
+
+pub trait AcceptHSink<H> {
+    type Return;
+    fn accept_hsink(self, sink: H) -> Self::Return;
 }
